@@ -1,0 +1,13 @@
+package com.qdgaming.main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class QdgamingMainApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(QdgamingMainApplication.class, args);
+    }
+
+}
