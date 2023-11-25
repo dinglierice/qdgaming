@@ -1,7 +1,9 @@
 package com.qdgaming.repository.orm.user;
 
 import com.qdgaming.repository.orm.base.BaseEntityDO;
+import lombok.Builder;
 
+@Builder
 public class UserDO extends BaseEntityDO {
     private String userName;
 
