@@ -1,7 +1,15 @@
 package com.qdgaming.controller.biz.user;
 
+import com.qdgaming.application.biz.user.UserWriteService;
+import com.qdgaming.controller.base.BaseController;
+import com.qdgaming.application.base.request.UserRegisterRequest;
+import com.qdgaming.controller.base.result.WebResult;
+import com.qdgaming.repository.dto.user.UserDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @description：TODO
@@ -10,22 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/user")
-public class UserController {
+public class UserController extends BaseController {
+    @Resource
+    UserWriteService userWriteService;
 
     @RequestMapping("/register")
     public WebResult<?> register(
-            @RequestParam String username,
+            @RequestParam String userName,
             @RequestParam String password
     ) {
-
-        ReaderRegisterRequest request = new ReaderRegisterRequest(
-                username,
-                password
-        );
-
-        ReaderDTO readerDTO = readerWriteFacade.register(request);
-
-        return success(readerDTO);
+        UserDTO userDTO = userWriteService.register(userName, password);
+        return success(userDTO);
     }
-
 }

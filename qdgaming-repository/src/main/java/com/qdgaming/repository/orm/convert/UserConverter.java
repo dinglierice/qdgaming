@@ -1,6 +1,7 @@
 package com.qdgaming.repository.orm.convert;
 
 import com.qdgaming.domain.biz.user.model.UserModel;
+import com.qdgaming.repository.dto.user.UserDTO;
 import com.qdgaming.repository.orm.user.UserDO;
 
 /**
@@ -38,6 +39,18 @@ public class UserConverter {
         userDO.setUpdateTime(userModel.getUpdateTime());
 
         return userDO;
+    }
 
+    public static UserDTO convertUserModel2UserDTO(UserModel userModel) {
+        if (userModel == null) {
+            return null;
+        }
+
+        return UserDTO.builder()
+                .id(userModel.getId())
+                .userName(userModel.getUserName())
+                .createTime(userModel.getCreateTime())
+                .updateTime(userModel.getUpdateTime())
+                .build();
     }
 }
