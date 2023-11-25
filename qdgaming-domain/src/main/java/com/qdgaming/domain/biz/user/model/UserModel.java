@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * @author：dinglie
- * @date：2023/11/23 23:20
+ * 描述业务语义的模型
  */
 @AllArgsConstructor
 @NoArgsConstructor

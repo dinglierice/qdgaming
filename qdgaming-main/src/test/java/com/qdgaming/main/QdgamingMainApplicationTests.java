@@ -8,6 +8,7 @@ class QdgamingMainApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("do something");
     }
 
 }

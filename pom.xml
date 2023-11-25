@@ -5,7 +5,17 @@
   <groupId>com.qd</groupId>
   <artifactId>qdgaming</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>qdgaming-domain</module>
+    <module>qdgaming-repository</module>
+    <module>qdgaming-application</module>
+    <module>qdgaming-controller</module>
+    <module>qdgaming-main</module>
+    <module>qdgaming-utility</module>
+    <module>qdgaming-infrastructure</module>
+  </modules>
 
   <name>qdgaming</name>
   <url>http://maven.apache.org</url>
