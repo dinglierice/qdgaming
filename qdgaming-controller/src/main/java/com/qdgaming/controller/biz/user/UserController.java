@@ -5,9 +5,7 @@ import com.qdgaming.controller.base.BaseController;
 import com.qdgaming.application.base.request.UserRegisterRequest;
 import com.qdgaming.controller.base.result.WebResult;
 import com.qdgaming.repository.dto.user.UserDTO;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -29,5 +27,11 @@ public class UserController extends BaseController {
     ) {
         UserDTO userDTO = userWriteService.register(userName, password);
         return success(userDTO);
+    }
+
+    @GetMapping("/query/{id}")
+    public WebResult<?> query(@PathVariable("id") Long id) {
+        UserDTO query = userWriteService.query(id);
+        return success(query);
     }
 }

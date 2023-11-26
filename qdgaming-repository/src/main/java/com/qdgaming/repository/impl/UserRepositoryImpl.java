@@ -41,7 +41,7 @@ public class UserRepositoryImpl implements UserRepository {
         int insert = userDOMapper.insert(userDO);
         if (insert > 0) {
             //查询一次。
-            userDO = userDOMapper.selectByPrimaryKey(userDO.getId());
+            userDO = userDOMapper.selectByName(userDO.getUserName());
             return UserConverter.convertUserDO2UserModel(userDO);
         }
         return null;

@@ -22,4 +22,9 @@ public class UserWriteService {
         UserModel register = userService.register(userName, password);
         return UserConverter.convertUserModel2UserDTO(register);
     }
+
+    public UserDTO query(Long id) {
+        UserModel query = userService.query(id);
+        return UserConverter.convertUserModel2UserDTO(query);
+    }
 }

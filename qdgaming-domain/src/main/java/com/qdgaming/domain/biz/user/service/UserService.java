@@ -32,4 +32,8 @@ public class UserService {
         userModel = userRepository.insert(userModel);
         return userModel;
     }
+
+    public UserModel query(Long id) {
+        return userRepository.queryById(id);
+    }
 }
