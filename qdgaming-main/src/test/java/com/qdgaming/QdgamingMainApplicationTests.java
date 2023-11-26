@@ -1,4 +1,4 @@
-package com.qdgaming.main;
+package com.qdgaming;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
