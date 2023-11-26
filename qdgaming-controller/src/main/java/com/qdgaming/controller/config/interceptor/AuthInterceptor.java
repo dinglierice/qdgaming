@@ -24,7 +24,8 @@ public class AuthInterceptor implements HandlerInterceptor {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
 
-        // TODO 这里用非SpringBean工具类来实现
+        // TODO 这里用非SpringBean工具类来实现, 去理解一下
+
         LoginStoreService loginStoreService = SpringContextUtil.getBean(LoginStoreService.class);
         return loginStoreService.doAuthIntercept(request, response, handler);
 
