@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -33,7 +35,23 @@ public class UserService {
         return userModel;
     }
 
+    public UserModel login(String userName, String password) {
+        UserModel userModel = userRepository.queryByUsername(userName);
+        if (null == userModel) {
+            throw new UtilException("用户不存在");
+        }
+        String encodedPassword = CryptUtil.bCryptEncode(password);
+        if (!Objects.equals(userModel.getPassword(), encodedPassword)) {
+            throw new UtilException("用户名或密码错误");
+        }
+        return userModel;
+    }
+
     public UserModel query(Long id) {
         return userRepository.queryById(id);
+    }
+
+    public List<UserModel> listHead(int row) {
+        return userRepository.listHead(row);
     }
 }

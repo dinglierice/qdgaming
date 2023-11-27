@@ -34,4 +34,6 @@ public interface UserDOMapper {
     int updateByPrimaryKey(UserDO row);
 
     UserDO selectByName(String userName);
+
+    List<UserDO> selectHead(int row);
 }

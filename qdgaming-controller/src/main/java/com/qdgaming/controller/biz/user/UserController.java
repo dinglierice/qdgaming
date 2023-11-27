@@ -8,11 +8,15 @@ import com.qdgaming.controller.base.BaseController;
 import com.qdgaming.application.base.request.UserRegisterRequest;
 import com.qdgaming.controller.base.result.WebResult;
 import com.qdgaming.repository.dto.user.UserDTO;
+import com.qdgaming.utility.util.StringUtil;
+import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @description：TODO
@@ -28,6 +32,14 @@ public class UserController extends BaseController {
 
     @Resource
     LoginStoreService loginStoreService;
+
+    @RequestMapping("/test_query")
+    @Feature(FeatureType.TEST)
+    public WebResult<?> test() {
+        List<UserDTO> userDTO = userWriteService.listUsers(5);
+        return success(userDTO);
+    }
+
 
     @RequestMapping("/register")
     @Feature(FeatureType.PUBLIC)
@@ -52,7 +64,19 @@ public class UserController extends BaseController {
                               @RequestParam String password,
                               HttpServletRequest request,
                               HttpServletResponse response) {
-        // TODO 写登录逻辑
-        return null;
+
+        UserDTO user = userWriteService.login(username, password);
+
+        //设置cookie.
+        String key = StringUtil.uuid();
+        Cookie cookie = new Cookie(LoginStoreService.USER_COOKIE_KEY, key);
+        cookie.setMaxAge(60 * 60 * 24 * 365);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+
+        loginStoreService.storeLoginUser(key, user);
+
+        return success(user);
     }
 }

@@ -1,6 +1,7 @@
 package com.qdgaming.controller.config;
 
 import com.qdgaming.controller.config.interceptor.AuthInterceptor;
+import com.qdgaming.controller.config.interceptor.TestInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,7 +23,8 @@ public class ServerConfiguration implements WebMvcConfigurer {
         //Trace拦截器
         //registry.addInterceptor(new TraceInterceptor());
         //添加权限拦截器
-        registry.addInterceptor(new AuthInterceptor());
+//        registry.addInterceptor(new AuthInterceptor());
+        registry.addInterceptor(new TestInterceptor());
         //添加监控拦截器
         //registry.addInterceptor(new FootprintInterceptor(AppType.MANAGE));
     }

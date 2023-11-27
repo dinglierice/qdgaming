@@ -12,7 +12,13 @@ public enum FeatureType {
     /**
      * 用户登录能访问
      */
-    USER_LOGIN("读者登录");
+    USER_LOGIN("读者登录"),
+
+    /**
+     * 测试接口
+     */
+    TEST("测试接口");
+
 
     @Getter
     private final String description;

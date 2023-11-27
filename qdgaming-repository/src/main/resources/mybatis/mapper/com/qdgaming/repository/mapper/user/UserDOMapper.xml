@@ -84,6 +84,13 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectHead" parameterType="com.qdgaming.repository.orm.user.UserDO" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user order by update_time desc limit #{row,jdbcType=INTEGER}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

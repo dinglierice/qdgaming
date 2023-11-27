@@ -31,6 +31,10 @@ public class LoginStoreService {
     public static final String USER_COOKIE_KEY = "exy";
     Map<String, UserDTO> loginUsers = new HashMap<>();
 
+    public void storeLoginUser(String key, UserDTO user) {
+        this.loginUsers.put(key, user);
+    }
+
     //从request中获取用户登录的token
     public String getAuthentication(HttpServletRequest request, String key) {
 

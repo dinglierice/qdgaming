@@ -8,8 +8,12 @@ import com.qdgaming.repository.orm.user.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @description：TODO
@@ -18,10 +22,10 @@ import javax.annotation.Resource;
  */
 @Service
 public class UserRepositoryImpl implements UserRepository {
-    
+
     @Resource
     UserDOMapper userDOMapper;
-    
+
     @Override
     public UserModel queryById(long id) {
         UserDO userDO = userDOMapper.selectByPrimaryKey(id);
@@ -45,5 +49,14 @@ public class UserRepositoryImpl implements UserRepository {
             return UserConverter.convertUserDO2UserModel(userDO);
         }
         return null;
+    }
+
+    @Override
+    public List<UserModel> listHead(int row) {
+        List<UserDO> userDOS = userDOMapper.selectHead(row);
+        if (CollectionUtils.isEmpty(userDOS)) {
+            return null;
+        }
+        return userDOS.stream().map(UserConverter::convertUserDO2UserModel).collect(Collectors.toList());
     }
 }

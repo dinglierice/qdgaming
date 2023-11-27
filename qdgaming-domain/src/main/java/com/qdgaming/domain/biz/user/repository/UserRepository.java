@@ -2,6 +2,8 @@ package com.qdgaming.domain.biz.user.repository;
 
 import com.qdgaming.domain.biz.user.model.UserModel;
 
+import java.util.List;
+
 public interface UserRepository {
     /**
      * 查找模型
@@ -23,4 +25,10 @@ public interface UserRepository {
      * @return
      */
     UserModel insert(UserModel readerModel);
+
+    /**
+     * 查询用户列表
+     * @return
+     */
+    List<UserModel> listHead(int row);
 }
