@@ -109,6 +109,7 @@ public class LoginStoreService {
             }
         }
         Feature methodFeature = handlerMethod.getMethodAnnotation(Feature.class);
+
         if (methodFeature != null) {
             FeatureType[] types = methodFeature.value();
             if (FeatureType.PUBLIC.equals(types[0])) {

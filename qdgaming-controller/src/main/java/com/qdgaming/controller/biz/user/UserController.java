@@ -9,6 +9,8 @@ import com.qdgaming.application.base.request.UserRegisterRequest;
 import com.qdgaming.controller.base.result.WebResult;
 import com.qdgaming.repository.dto.user.UserDTO;
 import com.qdgaming.utility.util.StringUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,7 @@ import java.util.List;
  * @author：dinglie
  * @date：2023/11/25 20:08
  */
+@Api(tags = "UserController", description = "用户管理")
 @RestController
 @RequestMapping("/api/user")
 public class UserController extends BaseController {
@@ -33,16 +36,17 @@ public class UserController extends BaseController {
     @Resource
     LoginStoreService loginStoreService;
 
-    @RequestMapping("/test_query")
-    @Feature(FeatureType.TEST)
+    @ApiOperation("测试请求")
+    @Feature(FeatureType.PUBLIC)
+    @GetMapping("/test_query")
     public WebResult<?> test() {
         List<UserDTO> userDTO = userWriteService.listUsers(5);
         return success(userDTO);
     }
 
-
-    @RequestMapping("/register")
+    @ApiOperation("用户注册")
     @Feature(FeatureType.PUBLIC)
+    @PostMapping("/register")
     public WebResult<?> register(
             @RequestParam String userName,
             @RequestParam String password
@@ -51,13 +55,15 @@ public class UserController extends BaseController {
         return success(userDTO);
     }
 
-    @GetMapping("/query/{id}")
+    @ApiOperation("根据id查询用户")
     @Feature(FeatureType.USER_LOGIN)
+    @GetMapping("/query/{id}")
     public WebResult<?> query(@PathVariable("id") Long id) {
         UserDTO query = userWriteService.query(id);
         return success(query);
     }
 
+    @ApiOperation("用户登录")
     @Feature(FeatureType.PUBLIC)
     @PostMapping("/login")
     public WebResult<?> login(@RequestParam String username,
