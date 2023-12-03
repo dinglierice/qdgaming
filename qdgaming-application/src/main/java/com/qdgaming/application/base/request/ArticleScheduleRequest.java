@@ -14,4 +14,6 @@ import org.checkerframework.checker.units.qual.A;
 public class ArticleScheduleRequest {
     private int requestTime;
     private int qps;
+    private String appCode;
+    private String actionCode;
 }

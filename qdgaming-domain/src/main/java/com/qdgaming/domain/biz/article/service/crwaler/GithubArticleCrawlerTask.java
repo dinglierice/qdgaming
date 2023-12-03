@@ -9,6 +9,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -17,13 +18,9 @@ import java.util.*;
  * @author：dinglie
  * @date：2023/12/3 12:22
  */
-public class GithubArticleCrawlerTask implements Runnable{
+@Component
+public class GithubArticleCrawlerTask extends AbstractCrawler{
     private final String GITHUB_ZH_URL = "https://www.github-zh.com/trends/weekly";
-    private final ArticleRepository articleRepository;
-
-    public GithubArticleCrawlerTask(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
-    }
 
     @Override
     public void run() {
