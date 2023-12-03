@@ -25,6 +25,6 @@ public class ArticleModel {
     private Date updateTime;
     private App app;
     private Action action;
-    private String req;
-    private String result;
+    private Map<String, Object> req;
+    private Object result;
 }

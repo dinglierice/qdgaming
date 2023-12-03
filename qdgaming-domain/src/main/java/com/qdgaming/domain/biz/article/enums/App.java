@@ -6,5 +6,5 @@ package com.qdgaming.domain.biz.article.enums;
  * @date：2023/12/2 12:41
  */
 public enum App {
-    ZHIHU;
+    ZHIHU, GITHUB_ZH;
 }

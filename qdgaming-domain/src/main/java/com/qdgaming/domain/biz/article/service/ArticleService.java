@@ -1,7 +1,7 @@
 package com.qdgaming.domain.biz.article.service;
 
 import com.qdgaming.domain.biz.article.repository.ArticleRepository;
-import com.qdgaming.domain.biz.article.service.crwaler.ZhihuArticleCrawlerTask;
+import com.qdgaming.domain.biz.article.service.crwaler.GithubArticleCrawlerTask;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +23,7 @@ public class ArticleService {
     public void generateArticleBySchedule(int requestTime, int qps) {
         producerService.submit(() -> {
             for (int i = 0; i < requestTime; i++) {
-                queue.add(new ZhihuArticleCrawlerTask("https://www.zhihu.com", articleRepository));
+                queue.add(new GithubArticleCrawlerTask(articleRepository));
             }
         });
 
