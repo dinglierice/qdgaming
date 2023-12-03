@@ -5,7 +5,6 @@ import com.qdgaming.controller.auth.Feature;
 import com.qdgaming.controller.auth.FeatureType;
 import com.qdgaming.controller.auth.LoginStoreService;
 import com.qdgaming.controller.base.BaseController;
-import com.qdgaming.application.base.request.UserRegisterRequest;
 import com.qdgaming.controller.base.result.WebResult;
 import com.qdgaming.repository.dto.user.UserDTO;
 import com.qdgaming.utility.util.StringUtil;
