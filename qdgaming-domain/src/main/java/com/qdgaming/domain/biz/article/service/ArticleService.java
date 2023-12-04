@@ -5,7 +5,7 @@ import com.qdgaming.domain.biz.article.enums.Action;
 import com.qdgaming.domain.biz.article.enums.App;
 import com.qdgaming.domain.biz.article.repository.ArticleRepository;
 import com.qdgaming.domain.biz.article.service.crwaler.AbstractCrawler;
-import com.qdgaming.domain.biz.article.service.crwaler.GithubArticleCrawlerTask;
+import com.qdgaming.domain.biz.article.service.crwaler.GithubWeekArticleCrawlerTask;
 import com.qdgaming.utility.exception.UtilException;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class ArticleService {
     private static final HashBasedTable<App, Action, AbstractCrawler> crawlerTable = HashBasedTable.create();
 
     static {
-        crawlerTable.put(App.GITHUB_ZH, Action.PC_WEB, new GithubArticleCrawlerTask());
+        crawlerTable.put(App.GITHUB_ZH, Action.PC_WEB, new GithubWeekArticleCrawlerTask());
     }
 
     @Resource

@@ -27,9 +27,7 @@ public abstract class AbstractCrawler implements Runnable{
     ArticleRepository articleRepository;
 
     @Override
-    public void run() {
-
-    }
+    public abstract void run();
 
     public void formFinalUrl(Map<String, Object> parameters) {
         if (null != baseUrl) {

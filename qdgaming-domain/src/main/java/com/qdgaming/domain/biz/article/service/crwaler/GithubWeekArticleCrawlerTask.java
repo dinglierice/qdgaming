@@ -19,7 +19,7 @@ import java.util.*;
  * @date：2023/12/3 12:22
  */
 @Component
-public class GithubArticleCrawlerTask extends AbstractCrawler{
+public class GithubWeekArticleCrawlerTask extends AbstractCrawler{
     private final String GITHUB_ZH_URL = "https://www.github-zh.com/trends/weekly";
 
     @Override
