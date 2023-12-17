@@ -5,6 +5,7 @@ import com.qdgaming.repository.orm.node.NodeDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+
 public interface NodeDOMapper {
     long countByExample(NodeDOExample example);
 
@@ -16,13 +17,13 @@ public interface NodeDOMapper {
 
     int insertSelective(NodeDO row);
 
+    List<NodeDO> selectHead(int rows);
+
+    NodeDO selectByName(String name);
+
     List<NodeDO> selectByExampleWithBLOBs(NodeDOExample example);
 
     List<NodeDO> selectByExample(NodeDOExample example);
-
-    List<NodeDO> selectHead(int row);
-
-    NodeDO selectByName(String name);
 
     NodeDO selectByPrimaryKey(Long id);
 

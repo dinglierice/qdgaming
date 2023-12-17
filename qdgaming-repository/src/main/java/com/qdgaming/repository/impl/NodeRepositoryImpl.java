@@ -6,6 +6,7 @@ import com.qdgaming.repository.mapper.node.NodeDOMapper;
 import com.qdgaming.repository.orm.convert.NodeConverter;
 import com.qdgaming.repository.orm.node.NodeDO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,6 +38,7 @@ public class NodeRepositoryImpl implements NodeRepository {
         return nodeDOMapper.deleteByPrimaryKey(id);
     }
 
+    // TODO 事务问题再看看
     @Override
     public NodeModel insert(NodeModel nodeModel) {
         int insert = nodeDOMapper.insert(NodeConverter.convertNodeModel2NodeDO(nodeModel));
@@ -45,5 +47,12 @@ public class NodeRepositoryImpl implements NodeRepository {
             return NodeConverter.convertNodeDO2NodeModel(nodeDO);
         }
         return null;
+    }
+
+    @Override
+    @Transactional
+    public int updateNode(NodeModel node) {
+        NodeDO nodeDO = NodeConverter.convertNodeModel2NodeDO(node);
+        return nodeDOMapper.updateByPrimaryKeySelective(nodeDO);
     }
 }

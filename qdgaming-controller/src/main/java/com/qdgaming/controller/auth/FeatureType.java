@@ -14,6 +14,8 @@ public enum FeatureType {
      */
     USER_LOGIN("读者登录"),
 
+    ADMIN("管理员"),
+
     /**
      * 测试接口
      */

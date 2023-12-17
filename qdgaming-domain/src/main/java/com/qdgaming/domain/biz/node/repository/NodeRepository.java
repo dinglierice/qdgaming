@@ -12,6 +12,7 @@ public interface NodeRepository {
 
     int removeNodeById(Long id);
 
-
     NodeModel insert(NodeModel nodeModel);
+
+    int updateNode(NodeModel nodeModel);
 }
