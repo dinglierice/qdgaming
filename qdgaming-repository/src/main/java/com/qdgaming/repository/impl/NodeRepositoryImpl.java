@@ -54,4 +54,8 @@ public class NodeRepositoryImpl implements NodeRepository {
         NodeDO nodeDO = NodeConverter.convertNodeModel2NodeDO(node);
         return nodeDOMapper.updateByPrimaryKeySelective(nodeDO);
     }
+
+    public NodeModel findByName(String name) {
+        return NodeConverter.convertNodeDO2NodeModel(nodeDOMapper.selectByName(name));
+    }
 }

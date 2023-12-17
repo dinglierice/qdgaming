@@ -10,6 +10,8 @@ public interface NodeRepository {
 
     NodeModel findNodeById(Long id);
 
+    NodeModel findByName(String name);
+
     int removeNodeById(Long id);
 
     NodeModel insert(NodeModel nodeModel);
