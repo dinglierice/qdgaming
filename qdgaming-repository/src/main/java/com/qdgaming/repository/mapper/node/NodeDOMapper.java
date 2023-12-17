@@ -3,9 +3,13 @@ package com.qdgaming.repository.mapper.node;
 import com.qdgaming.repository.orm.node.NodeDO;
 import com.qdgaming.repository.orm.node.NodeDOExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
-
+@Mapper
+@Repository
 public interface NodeDOMapper {
     long countByExample(NodeDOExample example);
 

@@ -38,6 +38,7 @@ public class NodeConverter {
                 .build();
         nodeDO.setCreateTime(nodeModel.getCreateTime());
         nodeDO.setCreateTime(nodeModel.getUpdateTime());
+        nodeDO.setId(nodeModel.getId());
         return nodeDO;
     }
 }

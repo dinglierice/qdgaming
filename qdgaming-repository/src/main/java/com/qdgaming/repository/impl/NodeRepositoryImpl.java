@@ -50,7 +50,6 @@ public class NodeRepositoryImpl implements NodeRepository {
     }
 
     @Override
-    @Transactional
     public int updateNode(NodeModel node) {
         NodeDO nodeDO = NodeConverter.convertNodeModel2NodeDO(node);
         return nodeDOMapper.updateByPrimaryKeySelective(nodeDO);

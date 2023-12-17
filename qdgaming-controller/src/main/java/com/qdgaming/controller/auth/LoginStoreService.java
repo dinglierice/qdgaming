@@ -117,13 +117,15 @@ public class LoginStoreService {
             FeatureType[] types = methodFeature.value();
             if (FeatureType.PUBLIC.equals(types[0])) {
                 return true;
-            } else if (FeatureType.ADMIN.equals(types[0])) {
+            }
+            else if (FeatureType.ADMIN.equals(types[0])) {
                 UserDTO loginUser = this.findLoginUser(request);
                 if (loginUser != null && loginUser.getUserName().equals(ADMIN_NAME)) {
                     return true;
                 }
                 throw new UtilException(ExceptionCode.LOGIN, "非管理员，无操作权限");
-            } else {
+            }
+            else {
                 List<FeatureType> featureTypeList = Arrays.asList(types);
                 if (featureTypeList.contains(FeatureType.USER_LOGIN)) {
                     UserDTO loginUser = this.findLoginUser(request);

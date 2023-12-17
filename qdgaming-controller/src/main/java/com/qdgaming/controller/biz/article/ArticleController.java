@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @author：dinglie
  * @date：2023/12/2 12:59
  */
-@Api(tags = "ArticleController", value = "文章")
+@Api(tags = "ArticleController", description = "文章")
 @RestController
 @RequestMapping("/api/article")
 public class ArticleController {

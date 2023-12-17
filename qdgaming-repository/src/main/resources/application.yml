@@ -23,3 +23,7 @@ spring: #springboot的配置
       min-idle: 1
       # 最大等待时间
       max-wait: 60000
+
+logging:
+  level:
+    com.qdgaming.repository.mapper: DEBUG

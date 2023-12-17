@@ -20,7 +20,7 @@ import java.util.List;
  * @author：dinglie
  * @date：2023/12/16 20:21
  */
-@Api(tags = "NodeController", value = "节点")
+@Api(tags = "NodeController", description = "节点")
 @RestController
 @RequestMapping("/api/node")
 public class NodeController extends BaseController {
@@ -36,10 +36,10 @@ public class NodeController extends BaseController {
     @PostMapping("/add")
     // TODO 新增管理员权限
     public WebResult<NodeModel> add(
-            @RequestParam String nodeName,
+            @RequestParam String name,
             @RequestParam String script
     ) {
-        NodeModel add = nodeWriteService.add(nodeName, script);
+        NodeModel add = nodeWriteService.add(name, script);
         return success(add);
     }
 
@@ -57,10 +57,10 @@ public class NodeController extends BaseController {
     // TODO 新增管理员权限
     public WebResult<String> update(
             @RequestParam Long id,
-            @RequestParam String nodeName,
+            @RequestParam String name,
             @RequestParam String script
     ) {
-        String result = nodeWriteService.update(id, nodeName, script);
+        String result = nodeWriteService.update(id, name, script);
         return success(result);
     }
 }
